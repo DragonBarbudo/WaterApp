@@ -1,0 +1,47 @@
+doctype html
+
+html
+  head
+    meta(charset="utf-8")
+    meta(name="msapplication-tap-highlight", content="no")
+    meta(name="viewport", content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width")
+    link(rel="stylesheet", href="css/index.css")
+    title Ciclo del agua
+
+  body
+    
+    div(data-loader="circle-side").loader
+    
+    .background
+    
+    .instrucciones.outside
+            img(src="img/instrucciones.svg")
+    .botones
+        img(src="img/btns/precipitacion.svg").btn#precipitacion
+        img(src="img/btns/condensacion.svg").btn#condensacion
+        img(src="img/btns/almacenamiento.svg").btn#almacenamiento
+        img(src="img/btns/distribucion.svg").btn#distribucion
+        img(src="img/btns/evaporacion.svg").btn#evaporacion
+    .character
+    
+    .textbox
+        .close
+        div(data="precipitacion").info
+            h2 Precipitación
+            p Las gotas de agua que forman las nubes caen sobre la superficie terrestre conocida como lluvia.
+        div(data="almacenamiento").info
+            h2 Almacenamiento
+            p Para que el agua llegue a tu casa, ésta se almacena en cuencas (sumideros naturales que alojan agua) y en las presas (depósitos construidos para retener el agua).
+        div(data="distribucion").info
+            h2 Distribución
+            p El agua se distribuye a las ciudades y al campo por medio de sistemas integrados por canales, tanques de almacenamiento, estaciones de bombeo y tuberías superficiales y subterráneas.
+        div(data="evaporacion").info
+            h2 Evaporación
+            p El mar, los ríos y los lagos son calentados por el sol, esto ocasiona que el agua se evapore.
+        div(data="condensacion").info
+            h2 Condensación
+            p El agua evaporada sube hasta la atmósfera y se convierte en nubes, a este proceso se le conoce como condensación.
+    script(src="cordova.js")
+    script(src="js/jq.js")
+    script(src="js/fastclick.js")
+    script(src="js/index.js")
