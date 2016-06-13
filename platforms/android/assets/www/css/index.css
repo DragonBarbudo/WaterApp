@@ -1943,7 +1943,6 @@ body h1 {
   right: 0;
   top: 0;
   bottom: 0;
-  background-size: cover;
   background-position: center;
 }
 .background.playing,
@@ -1966,9 +1965,13 @@ body h1 {
   right: 0;
 }
 .botones img.btn {
+  -webkit-animation-name: floating;
+  -webkit-animation-duration: 2s;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
   position: absolute;
-  width: 100px;
-  transform: translateY(0%);
+  margin-top: 0;
   transition: all 0.5s;
 }
 .botones img.btn#precipitacion {
@@ -1981,18 +1984,18 @@ body h1 {
 }
 .botones img.btn#distribucion {
   right: 15%;
-  bottom: 30%;
+  top: 60%;
 }
 .botones img.btn#evaporacion {
   left: 28%;
-  bottom: 8%;
+  top: 73%;
 }
 .botones img.btn#condensacion {
   left: 20%;
   top: 27%;
 }
 .botones img.btn.outside {
-  transform: translateY(1000%);
+  margin-top: -500%;
   transition: all 1s;
 }
 .botones.visible {
@@ -2003,7 +2006,7 @@ body h1 {
 .instrucciones {
   margin: 2% 5%;
   transform: translateY(0%);
-  transition: all 0.5s;
+  transition: margin 1s;
 }
 .instrucciones h1 {
   padding: 5px 0;
@@ -2016,15 +2019,15 @@ body h1 {
   padding: 5px 10px;
 }
 .instrucciones.outside {
-  transform: translateY(-200%);
-  transition: all 1s;
+  margin-top: -200%;
+  transition: margin 0.4s;
 }
 .instrucciones img {
   width: 220px;
 }
 .textbox {
   position: fixed;
-  width: 550px;
+  width: 460px;
   height: 340px;
   color: #0B9DD1;
   text-align: center;
@@ -2032,28 +2035,29 @@ body h1 {
   top: 50%;
   margin-top: -170px;
   z-index: 101;
-  background-image: url(../img/window.svg);
+  background-image: url(../img/window.png);
   background-size: 100% 100%;
   background-position: center;
-  transform: translateX(-200%);
+  margin-left: -200%;
   transition: all 0.5s;
+  text-shadow: 0 0 20px #fff ;
 }
 .textbox.open {
-  transform: translateX(0);
+  margin-left: 0;
   transition-speed: 1s;
-  transition-property: transform;
+  transition-property: margin;
   transition-delay: 1s;
 }
 .textbox .close {
-  width: 80px;
-  height: 80px;
-  background-image: url(../img/close.svg);
+  width: 53px;
+  height: 52px;
+  background-image: url(../img/close.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
-  left: -10px;
-  top: -10px;
+  right: -10px;
+  top: 15px;
 }
 .textbox div.info {
   display: none;
@@ -2063,12 +2067,12 @@ body h1 {
 .textbox div.info h2 {
   display: inline-block;
   color: #fff;
-  background: #ED8929;
+  background: #FEA42E;
   padding: 10px 30px;
   line-height: normal;
   margin-top: 60px;
   text-shadow: -5px 2px 20px #A86D23;
-  border-radius: 4px;
+  border-radius: 30px;
   font-size: 2em;
 }
 .textbox div.info p {
@@ -2077,4 +2081,27 @@ body h1 {
   line-height: normal;
   margin: 0 50px;
   color: #888;
+}
+@-webkit-keyframes floating {
+  0% {
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
+  50% {
+    -webkit-transform: translate(0px, -10px);
+    -moz-transform: translate(0px, -10px);
+    -o-transform: translate(0px, -10px);
+    -ms-transform: translate(0px, -10px);
+    transform: translate(0px, -10px);
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
 }
