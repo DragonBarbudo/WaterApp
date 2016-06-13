@@ -194,7 +194,6 @@ function allReady(){
 
 
 
-
         clearInterval(initAnim);
         clearInterval(loopAnim);
 
