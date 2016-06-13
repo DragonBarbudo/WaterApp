@@ -82,26 +82,46 @@ function charLoadImgs(){
     switch(charLoad){
         case 'intro':
             if( char[0]<= char[1] ){
+              $('<img src="img/char/'+charLoad+'-'+char[0]+'.png" />').load(function(){
+                  $('.character').append('<div class="'+charLoad+'" id="'+charLoad+char[0]+'""><img src="'+$(this).attr('src')+'"/></div>');
+                  reCharLoadImgs();
+              });
+
+                /* BACKGROUND */
+                /*
                 $('<img src="img/char/'+charLoad+'-'+char[0]+'.png" />').load(function(){
                     $('.character').append('<div class="'+charLoad+'" id="'+charLoad+char[0]+'" style="background-image:url('+$(this).attr('src')+')"></div>');
                     reCharLoadImgs();
                 });
+                */
             } else { char[0]=0; charLoad='loop'; reCharLoadImgs(); }
             break;
         case 'loop':
             if( char[0]<= char[2] ){
+              $('<img src="img/char/'+charLoad+'-'+char[0]+'.png" />').load(function(){
+                $('.character').append('<div class="'+charLoad+'" id="'+charLoad+char[0]+'""><img src="'+$(this).attr('src')+'"/></div>');
+                  reCharLoadImgs();
+              });
+              /*
                 $('<img src="img/char/'+charLoad+'-'+char[0]+'.png" />').load(function(){
                     $('.character').append('<div class="'+charLoad+'" id="'+charLoad+char[0]+'" style="background-image:url('+$(this).attr('src')+')"></div>');
                     reCharLoadImgs();
                 });
+              */
             } else { char[0]=0; charLoad='exit'; $('.instrucciones').removeClass('outside'); $('.loader').addClass('hider');  reCharLoadImgs(); }
             break;
         case 'exit':
             if( char[0]<= char[3] ){
+              $('<img src="img/char/'+charLoad+'-'+char[0]+'.png" />').load(function(){
+                $('.character').append('<div class="'+charLoad+'" id="'+charLoad+char[0]+'""><img src="'+$(this).attr('src')+'"/></div>');
+                  reCharLoadImgs();
+              });
+              /*
                 $('<img src="img/char/'+charLoad+'-'+char[0]+'.png" />').load(function(){
                     $('.character').append('<div class="'+charLoad+'" id="'+charLoad+char[0]+'" style="background-image:url('+$(this).attr('src')+')"></div>');
                     reCharLoadImgs();
                 });
+              */
             } else { char[0]=parseInt(1); charLoad=false; $('.botones').addClass('visible');}
             break;
     }

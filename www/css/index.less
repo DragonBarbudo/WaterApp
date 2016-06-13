@@ -14,14 +14,14 @@ body {
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-  
+
 }
 
 body{
     background: #20BFFF;
     font-family: Roboto;
     h1{text-transform: uppercase; font-size: 20px; }
-    
+
 }
 
 .loader{
@@ -44,7 +44,7 @@ body{
         display: none;
         position: fixed;
         left: 0;right: 0;top: 0;bottom: 0;
-        background-size: cover;
+        //background-size: cover;
         background-position: center;
     }
     &.playing{
@@ -61,7 +61,8 @@ body{
 .character{
     //display: none;
     div{
-        background-position: right bottom;
+        //background-position: right bottom;
+
     }
 }
 
@@ -72,14 +73,14 @@ body{
     z-index: 100;
     left: 0; top: 0; bottom: 0; right: 0;
     img.btn{
+      .floating;
         position: absolute;
-        width: 100px;
         &#precipitacion{ right: 20%; top: 10%; }
         &#almacenamiento{ left: 48%; top: 27%; }
         &#distribucion{ right: 15%; top: 60%; }
         &#evaporacion{ left: 28%; top: 73%; }
         &#condensacion{ left: 20%; top: 27%; }
-        
+
         margin-top: 0;
         transition: all 0.5s;
         &.outside{
@@ -124,11 +125,12 @@ body{
   top:50%;
   margin-top: -170px;
   z-index: 101;
-  background-image: url(../img/window.svg);
+  background-image: url(../img/window.png);
   background-size: 100% 100%;
   background-position: center;
   margin-left: -200%;
   transition: all 0.5s;
+  text-shadow: 0 0 20px #fff ;
   &.open{
     margin-left: 0;
     transition-speed: 1s;
@@ -136,15 +138,15 @@ body{
     transition-delay: 1s;
   }
   .close{
-      width:80px; height: 80px;
-      background-image: url(../img/close.svg);
+      width:53px; height: 52px;
+      background-image: url(../img/close.png);
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
       position: absolute;
-      left: -10px; top: -10px;
+      right: -10px; top: 15px;
   }
-  
+
   div.info{
       display: none;
     line-height: 100px;
@@ -152,12 +154,12 @@ body{
     h2{
         display: inline-block;
         color:#fff;
-        background:#ED8929;
+        background:#FEA42E;
         padding: 10px 30px;
         line-height: normal;
         margin-top: 60px;
         text-shadow: -5px 2px 20px #A86D23;
-        border-radius: 4px;
+        border-radius: 30px;
         font-size: 2em;
     }
     p{
@@ -167,7 +169,36 @@ body{
         margin: 0 50px;
         color:#888;
     }
-    
+
   }
-  
+
+}
+
+
+
+.transform(...) {
+  -webkit-transform: @arguments;
+  -moz-transform: @arguments;
+  -o-transform: @arguments;
+  -ms-transform: @arguments;
+  transform: @arguments;
+}
+
+@-webkit-keyframes floating{
+    0%{
+        .transform(translate(0px,0px));
+    }
+    50%{
+        .transform(translate(0px,-10px));
+    }
+    100%{
+       .transform(translate(0px,0px));
+    }
+}
+.floating(@dur:2s) {
+  -webkit-animation-name: floating;
+  -webkit-animation-duration: @dur;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
 }

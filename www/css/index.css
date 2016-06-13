@@ -1943,7 +1943,6 @@ body h1 {
   right: 0;
   top: 0;
   bottom: 0;
-  background-size: cover;
   background-position: center;
 }
 .background.playing,
@@ -1956,9 +1955,6 @@ body h1 {
 .character.run {
   opacity: 1;
 }
-.character div {
-  background-position: right bottom;
-}
 .botones {
   opacity: 0;
   position: absolute;
@@ -1969,8 +1965,12 @@ body h1 {
   right: 0;
 }
 .botones img.btn {
+  -webkit-animation-name: floating;
+  -webkit-animation-duration: 2s;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
   position: absolute;
-  width: 100px;
   margin-top: 0;
   transition: all 0.5s;
 }
@@ -2035,11 +2035,12 @@ body h1 {
   top: 50%;
   margin-top: -170px;
   z-index: 101;
-  background-image: url(../img/window.svg);
+  background-image: url(../img/window.png);
   background-size: 100% 100%;
   background-position: center;
   margin-left: -200%;
   transition: all 0.5s;
+  text-shadow: 0 0 20px #fff ;
 }
 .textbox.open {
   margin-left: 0;
@@ -2048,15 +2049,15 @@ body h1 {
   transition-delay: 1s;
 }
 .textbox .close {
-  width: 80px;
-  height: 80px;
-  background-image: url(../img/close.svg);
+  width: 53px;
+  height: 52px;
+  background-image: url(../img/close.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
-  left: -10px;
-  top: -10px;
+  right: -10px;
+  top: 15px;
 }
 .textbox div.info {
   display: none;
@@ -2066,12 +2067,12 @@ body h1 {
 .textbox div.info h2 {
   display: inline-block;
   color: #fff;
-  background: #ED8929;
+  background: #FEA42E;
   padding: 10px 30px;
   line-height: normal;
   margin-top: 60px;
   text-shadow: -5px 2px 20px #A86D23;
-  border-radius: 4px;
+  border-radius: 30px;
   font-size: 2em;
 }
 .textbox div.info p {
@@ -2080,4 +2081,27 @@ body h1 {
   line-height: normal;
   margin: 0 50px;
   color: #888;
+}
+@-webkit-keyframes floating {
+  0% {
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
+  50% {
+    -webkit-transform: translate(0px, -10px);
+    -moz-transform: translate(0px, -10px);
+    -o-transform: translate(0px, -10px);
+    -ms-transform: translate(0px, -10px);
+    transform: translate(0px, -10px);
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
 }
