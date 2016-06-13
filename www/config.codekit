@@ -2541,7 +2541,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 70142,
+		"initialSize": 73886,
 		"inputAbbreviatedPath": "\/img\/new_bg\/bg-41.jpeg",
 		"outputAbbreviatedPath": "\/img\/new_bg\/bg-81.jpeg",
 		"outputPathIsOutsideProject": 0,
@@ -2585,7 +2585,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 70087,
+		"initialSize": 74217,
 		"inputAbbreviatedPath": "\/img\/new_bg\/bg-45.jpeg",
 		"outputAbbreviatedPath": "\/img\/new_bg\/bg-45.jpeg",
 		"outputPathIsOutsideProject": 0,
@@ -2629,7 +2629,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 70141,
+		"initialSize": 73350,
 		"inputAbbreviatedPath": "\/img\/new_bg\/bg-49.jpeg",
 		"outputAbbreviatedPath": "\/img\/new_bg\/bg-49.jpeg",
 		"outputPathIsOutsideProject": 0,
@@ -2723,15 +2723,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
-		},
-	"\/index.html": {
-		"fileType": 8192,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/index.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
 		},
 	"\/index.jade": {
 		"compileDebug": 1,
