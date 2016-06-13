@@ -217,7 +217,7 @@ function allReady(){
 
 
 
-$(window).load(function() {    loadImage(); });
+//$(window).load(function() {    loadImage(); });
 
 
 
