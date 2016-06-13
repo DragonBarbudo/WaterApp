@@ -18,11 +18,11 @@
  */
 
 var counterLoader = 1;
-var totalImages = 102;
+var totalImages = 51;
 var current=1;
 
-var char = [ 1, 191, 164, 6 ];
-var charLoad = 'ci';
+var char = [ 1, 96, 82, 6 ];
+var charLoad = 'intro';
 
 var initanim, loopAnim, exitAnim;
 
@@ -43,24 +43,19 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
         loadImage();
-        
+        $(function() {
+            FastClick.attach(document.body);
+        });
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
     }
 };
 
-app.initialize();
+
 
 
 
@@ -69,7 +64,7 @@ app.initialize();
 function reLoadImage(){ counterLoader++; loadImage(); }
 function loadImage(){
     if(counterLoader <= totalImages){
-     $('<img src="img/bg/bg-'+counterLoader+'.png" />').load(function(){
+     $('<img src="img/new_bg/bg-'+counterLoader+'.jpeg" />').load(function(){
        var path = $(this).attr('src');
         $('.background').append('<div id="img'+counterLoader+'" style="background-image:url('+path+')"></div>');
         reLoadImage();
@@ -85,28 +80,48 @@ function loadImage(){
 function reCharLoadImgs(){char[0]++; charLoadImgs();}
 function charLoadImgs(){
     switch(charLoad){
-        case 'ci':
+        case 'intro':
             if( char[0]<= char[1] ){
+              $('<img src="img/char/'+charLoad+'-'+char[0]+'.png" />').load(function(){
+                  $('.character').append('<div class="'+charLoad+'" id="'+charLoad+char[0]+'""><img src="'+$(this).attr('src')+'"/></div>');
+                  reCharLoadImgs();
+              });
+
+                /* BACKGROUND */
+                /*
                 $('<img src="img/char/'+charLoad+'-'+char[0]+'.png" />').load(function(){
                     $('.character').append('<div class="'+charLoad+'" id="'+charLoad+char[0]+'" style="background-image:url('+$(this).attr('src')+')"></div>');
                     reCharLoadImgs();
                 });
-            } else { char[0]=0; charLoad='cl'; reCharLoadImgs(); }
+                */
+            } else { char[0]=0; charLoad='loop'; reCharLoadImgs(); }
             break;
-        case 'cl':
+        case 'loop':
             if( char[0]<= char[2] ){
+              $('<img src="img/char/'+charLoad+'-'+char[0]+'.png" />').load(function(){
+                $('.character').append('<div class="'+charLoad+'" id="'+charLoad+char[0]+'""><img src="'+$(this).attr('src')+'"/></div>');
+                  reCharLoadImgs();
+              });
+              /*
                 $('<img src="img/char/'+charLoad+'-'+char[0]+'.png" />').load(function(){
                     $('.character').append('<div class="'+charLoad+'" id="'+charLoad+char[0]+'" style="background-image:url('+$(this).attr('src')+')"></div>');
                     reCharLoadImgs();
                 });
-            } else { char[0]=0; charLoad='ce'; $('.instrucciones').removeClass('outside'); $('.loader').addClass('hider');  reCharLoadImgs(); }
+              */
+            } else { char[0]=0; charLoad='exit'; $('.instrucciones').removeClass('outside'); $('.loader').addClass('hider');  reCharLoadImgs(); }
             break;
-        case 'ce':
+        case 'exit':
             if( char[0]<= char[3] ){
+              $('<img src="img/char/'+charLoad+'-'+char[0]+'.png" />').load(function(){
+                $('.character').append('<div class="'+charLoad+'" id="'+charLoad+char[0]+'""><img src="'+$(this).attr('src')+'"/></div>');
+                  reCharLoadImgs();
+              });
+              /*
                 $('<img src="img/char/'+charLoad+'-'+char[0]+'.png" />').load(function(){
                     $('.character').append('<div class="'+charLoad+'" id="'+charLoad+char[0]+'" style="background-image:url('+$(this).attr('src')+')"></div>');
                     reCharLoadImgs();
                 });
+              */
             } else { char[0]=parseInt(1); charLoad=false; $('.botones').addClass('visible');}
             break;
     }
@@ -115,52 +130,52 @@ function charLoadImgs(){
 
 function characterInit(){
     char[0] = parseInt(1);
-    
-    initAnim = setInterval(function(){      
-        $('.ci').hide();  
-        $('#ci'+char[0]).show();
+
+    initAnim = setInterval(function(){
+        $('.intro').hide();
+        $('#intro'+char[0]).show();
         if(char[0]>1){
-            $('#ci'+(char[0]-1)).hide();
+            $('#intro'+(char[0]-1)).hide();
         } else {
-             $('#ci'+char[1]).hide(); 
+             $('#intro'+char[1]).hide();
         }
-        if(char[0]<char[1]){char[0]++;}else{ characterLoop(); clearInterval(initAnim); $('.ci').hide(); }
-    }, 36);
+        if(char[0]<char[1]){char[0]++;}else{ characterLoop(); clearInterval(initAnim); $('.intro').hide(); }
+    }, 64);
 }
 
 function characterLoop(){
      char[0] = parseInt(1);
     //ANIM
-    loopAnim = setInterval(function(){ 
-        $('#cl'+char[0]).show();
+    loopAnim = setInterval(function(){
+        $('#loop'+char[0]).show();
         if(char[0]>1){
-            $('#cl'+(char[0]-1)).hide();
+            $('#loop'+(char[0]-1)).hide();
         } else {
-             $('#cl'+char[2]).hide(); 
+             $('#loop'+char[2]).hide();
         }
         if(char[0]<char[2]){char[0]++;}else{ char[0] = parseInt(1); }
-    }, 36);  
-       
+    }, 64);
+
 }
 
 
 function allReady(){
     //HIDE VIEW
-    
+
     $('.background').addClass('playing');
-     
+
     //ANIM
     setInterval(function(){
         $('#img'+current).show();
         if(current>1){
             $('#img'+(current-1)).hide();
         } else {
-             $('#img'+totalImages).hide(); 
+             $('#img'+totalImages).hide();
         }
         if(current<totalImages){current++;}else{current=1;}
-    }, 36);  
-    
-    
+    }, 64);
+
+
     //BUTTONS
     $('.botones .btn').click(function(){
         var view = $(this).attr('id');
@@ -171,52 +186,41 @@ function allReady(){
         $('.character').addClass('run');
         $('.botones img, .instrucciones').addClass('outside');
         characterInit();
-        
+
     });
     $('.close').click(function(){
         $('.textbox').removeClass('open');
         $('.botones .btn, .instrucciones').removeClass('outside');
-        
-        
-        
-        
+
+
+
+
         clearInterval(initAnim);
         clearInterval(loopAnim);
-        
+
         char[0] = parseInt(1);
-        exitAnim = setInterval(function(){  
-            console.log('#ce'+char[0]);    
-            $('.ce').hide();
-            $('#ce'+char[0]).show();
-            $('.ci, .cl').hide();
+        exitAnim = setInterval(function(){
+            $('.exit').hide();
+            $('#exit'+char[0]).show();
+            $('.intro, .loop').hide();
             if(char[0]>1){
-                $('#ce'+(char[0]-1)).hide();
+                $('#exit'+(char[0]-1)).hide();
             }
-            if(char[0]<char[3]){char[0]++;}else{ clearInterval(exitAnim); $('.character').removeClass('run'); $('.ce').hide(); }
-        }, 120);
-    
-    
-        
+            if(char[0]<char[3]){char[0]++;}else{ clearInterval(exitAnim); $('.character').removeClass('run'); $('.exit').hide(); }
+        }, 64);
+
+
+
     });
-    
+
 }
 
 
 
 
+$(window).load(function() {    loadImage(); });
 
 
 
 
-
-
-
-
-
-
-$(window).load(function() {    
-    loadImage();
-});
-
-
-
+app.initialize();
